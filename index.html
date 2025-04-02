@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>BMI Calculator</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<style>
+		body{
+			background-color: beige;
+		}
+	</style>
+</head>
+
+<body>
+
+<br>
+
+<div class="container" style="background-color: #C6B38D;">
+	<center>
+		<br>
+		<h2 style="font-family: Courier New;"> BMI CALCULATOR </h2>
+		<h5 style="font-family: Garamond;">A BMI (Body Mass Index) calculator is a tool that estimates a person's body fat based on their height and weight, classifying them as underweight, healthy weight, overweight, or obese. <h6>-AI OVERVIEW</h6></h5>
+		<br>
+	</center>
+</div>
+
+<br> 
+
+<div class="container" style="background-color: #AA9261; width: 70%">
+	<center>
+		<br>
+		<img src="bmi.png" style="width: 300px;">
+		<br><br>
+		<details ontoggle="message1()">
+			<summary>
+				<u>Instructions</u> <br>
+				<i id="ans"> </i>
+			</summary>        	
+		</details>
+		<br>
+		<input type="number" class="form-control" id="num1" placeholder="Your weight in kilograms" style="background-color: #C6B38D; width: 30%;">
+		<kbd> Kilogram</kbd>
+		<br><br>
+		<input type="number" class="form-control" id="num2" placeholder="Your height in meters" style="background-color: #D0BF9E; width: 30%;">
+		<kbd> Meter</kbd>
+		<br><br>
+		<button type="button" class="btn btn-success" onclick="RndResult()">Calculate BMI</button>
+		<br><br><br><br>
+		<kbd id="result1">BMI: </kbd><br> <kbd id="category">Category: </kbd>
+	</center>
+</div>
+
+<script>
+	
+	function message1() {
+		document.getElementById("ans").innerHTML = "Input your weight and height below. (Value only, no need to add the unit)";
+	}
+
+	function RndResult() {
+		var w1 = document.getElementById('num1').value;
+		var h2 = document.getElementById('num2').value;
+
+	
+		if (w1 > 0 && h2 > 0) {
+			
+			var bmi = w1 / (h2 * h2); 
+			var bmiValue = bmi.toFixed(2);
+			document.getElementById('result1').innerHTML = "BMI: " + bmiValue;
+
+			var category = '';
+			if (bmi < 18.5) {
+				category = 'You are underweight!!!!';}
+			 else if (bmi >= 18.5 && bmi <= 24.9) {
+				category = 'Normal weight!! Very good :)';} 
+			else if (bmi >= 25 && bmi <= 29.9) {
+				category = 'You are overweight!';
+			} else {
+				category = 'You are OBESE! Go outside.';
+			}
+
+			document.getElementById('category').innerHTML = "Category: " + category;
+
+		} else {
+			
+			document.getElementById('result1').innerHTML = "Please enter valid positive numbers for weight and height.";
+			document.getElementById('category').innerHTML = ''
+		}
+	}
+</script>
+
+</body>
+</html>
